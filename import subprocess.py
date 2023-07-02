@@ -18,6 +18,22 @@ def Get_Host(x):
 Network, First_Host = Get_Host(First_ip)
 Network, Last_Host = Get_Host(Last_ip)
 
-print(Network)
-print(First_Host)
-print(Last_Host)
+Empty_String = ""
+
+Counter = 0
+
+for i in range(int(First_Host), int(Last_Host) +1):
+    Process = subprocess.getoutput("ping -n 1 " + Network + str(i))
+    Empty_String += Process
+
+    String_Needed = re.compile(r"TTL=")
+    mo = String_Needed.search(Empty_String)
+    try:
+        if mo.group() == "TTL=":
+            print("Host " + Network + str(i) + " is UP")
+    except:
+        print("Host " + Network + str(i) + " is down")
+
+    Empty_String = ""
+
+print("Completed")
