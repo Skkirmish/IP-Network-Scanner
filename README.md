@@ -1,2 +1,2 @@
 # IP-Network-Scanner
-#This project is stil a WIP please return later for more information
+#This is a very basic network scanner that allows you to scan an IP range within your network to view which IPs are being used and which are not
